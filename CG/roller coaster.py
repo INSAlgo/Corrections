@@ -1,3 +1,5 @@
+#https://www.codingame.com/ide/puzzle/roller-coaster
+
 L, C, N = [int(i) for i in input().split()]
 File = []
 for i in range(N):
