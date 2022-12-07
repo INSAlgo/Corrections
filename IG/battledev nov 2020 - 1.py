@@ -5,8 +5,8 @@ import sys
 N = int(input())
 compteur = 0
 
-
 # Solution de base :
+
 for i in range(N):
     #On recupere chaque nom
     nom = input()
@@ -22,7 +22,8 @@ for i in range(N):
         compteur +=1
 
 
-# Solution avancé en utilisant une regex
+# Avec regex :
+
 import re
 for i in range(N):
     if re.fullmatch(r"\d+",input()[-5:]):
