@@ -1,3 +1,5 @@
+# https://adventofcode.com/2022/day/17
+
 from reader import read
 
 width = 7

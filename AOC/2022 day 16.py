@@ -1,3 +1,5 @@
+# https://adventofcode.com/2022/day/16
+
 from queue import PriorityQueue
 
 from reader import read

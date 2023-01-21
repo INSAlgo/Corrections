@@ -1,3 +1,5 @@
+# https://adventofcode.com/2022/day/14
+
 import numpy as np
 from reader import read
 

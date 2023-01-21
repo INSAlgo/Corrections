@@ -1,3 +1,5 @@
+# https://adventofcode.com/2022/day/19
+
 from math import ceil
 import sys
 from reader import read

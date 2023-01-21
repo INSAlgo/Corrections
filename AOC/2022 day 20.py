@@ -1,3 +1,5 @@
+# https://adventofcode.com/2022/day/20
+
 from reader import read
 from collections import Counter
 

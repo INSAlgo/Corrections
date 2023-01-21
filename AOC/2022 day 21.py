@@ -1,3 +1,5 @@
+# https://adventofcode.com/2022/day/21
+
 from __future__ import annotations
 from queue import Queue
 from reader import read

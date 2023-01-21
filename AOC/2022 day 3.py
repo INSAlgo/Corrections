@@ -1,3 +1,5 @@
+# https://adventofcode.com/2022/day/3
+
 from reader import read
 
 def priority(char: str) :

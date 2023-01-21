@@ -1,3 +1,5 @@
+# https://adventofcode.com/2022/day/10
+
 from reader import read
 
 lines = read("day10.txt")
