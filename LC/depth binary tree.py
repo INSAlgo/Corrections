@@ -17,21 +17,8 @@ from collections import deque
 class Solution:
    
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        
-        
-        queue = deque()
-        
-        queue.append((root,1))
-
-        maxDepth = 0
-        
-        while queue:
-            currentNode,currentLevel = queue.popleft()
-            if currentNode is None:
-                continue
-            else:
-                maxDepth = max(maxDepth,currentLevel)
-                queue.append((currentNode.left,currentLevel+1))
-                queue.append((currentNode.right,currentLevel+1))
-        return(maxDepth)
+        # DFS récursif
+        if root is None :
+            return 0
+        return max(self.maxDepth(root.right), self.maxDepth(root.left)) + 1
         
