@@ -14,21 +14,27 @@ class TreeNode:
 # Partie à coder :
 
 class Solution:
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+    def hasPathSum(self, root: Optional[TreeNode], target_sum: int) -> bool:
+        # Cas d'un arbre vide
+        if root is None :
+            return False
         
-        def DFS(node: TreeNode,pathSum,currentPath):
-            
-            if node is None:
-                return
-            
-            if node.left is None and node.right is None:
-                if pathSum+node.val==targetSum:
-                    solution.append(currentPath+[node.val])
-                return
-            
-            DFS(node.left,pathSum+node.val,currentPath+[node.val])
-            DFS(node.right,pathSum+node.val,currentPath+[node.val])
-            
-        solution = []
-        DFS(root,0,[])
-        return solution
+        self.target_sum = target_sum
+        
+        # Appel initial
+        return self.DFS(root)
+
+    def DFS(self, root: Optional[TreeNode], sum_: int = 0) :
+        # Cas d'arrêt (branche vide)
+        if root is None :
+            return False
+
+        # Incrémentation de la somme
+        new_sum = sum_ + root.val
+
+        # Cas d'arrêt (feuille)
+        if root.left is None and root.right is None :
+            return new_sum == self.target_sum
+
+        # Récursion
+        return self.DFS(root.left, new_sum) or self.DFS(root.right, new_sum)
