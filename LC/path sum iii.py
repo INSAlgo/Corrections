@@ -14,26 +14,28 @@ class TreeNode:
 # Partie à coder :
 
 class Solution:
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int :
+        self.target_sum = targetSum
         
-        nbOfSolution = [0]
+        # Appel inital
+        return int(self.DFS(root))
+
+    def DFS(self, root: Optional[TreeNode], path: List[int] = []) -> int :
+        res = 0
+
+        # Cas d'arrêt (branche vide)
+        if root is None :
+            return res
         
-        def DFS(node: TreeNode):
+        # Incrémentation du chemin
+        new_path = path + [root.val]
 
-            if node is None:
-                return []
-            
-            currentPaths = [node.val]
-            if node.val==targetSum:
-                nbOfSolution[0]+=1
-            
-
-            for childPath in DFS(node.left)+DFS(node.right):
-                if node.val+childPath==targetSum:
-                    nbOfSolution[0]+=1
-                currentPaths.append(node.val+childPath)
-            
-            return currentPaths
-
-        DFS(root)
-        return nbOfSolution[0]
+        # Vérification de toutes les sommes qui se terminent sur ce noeud
+        s = 0
+        for i in range(len(new_path)) :
+            s += new_path[-i-1]
+            if s == self.target_sum :
+                res += 1
+        
+        # Récursion :
+        return res + self.DFS(root.left, new_path) + self.DFS(root.right, new_path)
