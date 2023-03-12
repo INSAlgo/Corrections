@@ -1,24 +1,25 @@
 # https://www.isograd-testingservices.com/FR/solutions-challenges-de-code?cts_id=70# (Exo 3)
 
-from collections import deque
+n = int(input())
 
-N=int(input())
+children = [[] for _ in range(n)]
+for _ in range(n-1) :
+    A, B = map(int, input().split())
+    children[B].append(A)
 
-adj = [[]for _ in range(N)]
-number = [0 for _ in range(10)]
+pop = [0 for _ in range(10)]    # population des niveaux
 
-for _ in range(N-1):
-    A,B=map(int,input().split())
-    adj[B].append(A)
-
-q = deque()
-q.append((0,0))
-
-while q:
-    current,lvl = q.popleft()
-    number[lvl]+=1
+def explore(node: int = 0, depth: int = 0) :
+    # DFS récursif
     
-    for nei in adj[current]:
-        q.append((nei,lvl+1))
+    # On enregistre à quelle profondeur est le noeud actuel
+    pop[depth] += 1
+    
+    # Récursion
+    for child in children[node] :
+        explore(child, depth+1)
 
-print(*number)
+# Appel initial
+explore()
+
+print(*pop)
