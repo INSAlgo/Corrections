@@ -2,7 +2,7 @@
 
 # Partie implicite :
 
-from typing import Optional
+from typing import Optional, List
 
 # Definition for a binary tree node.
 class TreeNode:
