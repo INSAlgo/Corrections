@@ -1,39 +1,16 @@
-# https://www.hackerrank.com/challenges/is-binary-search-tree/problem?isFullScreen=true
-
-# Partie implicite :
-
-class Node:
+""" Node is defined as
+class node:
   def __init__(self, data):
       self.data = data
       self.left = None
       self.right = None
-
-# Partie à coder :
-
-def getValues(node: Node):
-    if not node:
-        return []
-    values=[node.data]
-    return values+getValues(node.right)+getValues(node.left)
-
-def search(root: Node, value):
-    currentNode=root
-    while currentNode.data!=value:
-        if value>currentNode.data:
-            currentNode=currentNode.right
-        else:
-            currentNode=currentNode.left
-        if not currentNode:
-            return False
-    else:
+"""
+def check_binary_search_tree_(root, left = -1, right=10**4+1):
+    if root is None:    # Si une feuille de l'arbre
         return True
-
-def check_binary_search_tree_(root: Node):
-    values = getValues(root)
-    if len(set(values))!=len(values):
+    if root.data<=left or root.data>=right:     # Si pas dans l'intervalle
         return False
-    for value in values:
-        if not search(root,value):
-            return False
-    else:
-        return True
+    # Sinon, on vérifie les enfants
+    return check_binary_search_tree_(root.left, left, root.data) \
+        and check_binary_search_tree_(root.right, root.data, right)
+
