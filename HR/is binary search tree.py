@@ -1,10 +1,13 @@
-""" Node is defined as
-class node:
+# https://www.hackerrank.com/challenges/is-binary-search-tree/problem
+
+# Partie implicite :
+class Node:
   def __init__(self, data):
       self.data = data
       self.left = None
       self.right = None
-"""
+
+# Partie à coder :
 def check_binary_search_tree_(root, left = -1, right=10**4+1):
     if root is None:    # Si une feuille de l'arbre
         return True
